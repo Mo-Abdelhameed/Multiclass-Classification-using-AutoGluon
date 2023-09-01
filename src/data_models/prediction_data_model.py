@@ -75,7 +75,7 @@ def validate_predictions(
 
     Args:
         predictions (pd.DataFrame): Predictions data to validate.
-        data_schema (BinaryClassificationSchema): An instance of
+        data_schema (MulticlassClassificationSchema): An instance of
             inaryClassificationSchema.
 
     Returns:
@@ -93,7 +93,7 @@ if __name__ == "__main__":
     schema_dict = {
         "title": "test dataset",
         "description": "test dataset",
-        "modelCategory": "binary_classification",
+        "modelCategory": "multiclass_classification",
         "schemaVersion": 1.0,
         "inputDataFormat": "CSV",
         "id": {"name": "id", "description": "unique identifier."},
@@ -111,15 +111,29 @@ if __name__ == "__main__":
                 "nullable": True,
             },
             {
+                "name": "numeric_feature_2",
+                "description": "some desc.",
+                "dataType": "NUMERIC",
+                "example": 0.5,
+                "nullable": False,
+            },
+            {
                 "name": "categorical_feature_1",
                 "description": "some desc.",
                 "dataType": "CATEGORICAL",
-                "categories": ["X", "Y", "Z"],
+                "categories": ["A", "B", "C"],
                 "nullable": True,
+            },
+            {
+                "name": "categorical_feature_2",
+                "description": "some desc.",
+                "dataType": "CATEGORICAL",
+                "categories": ["P", "Q", "R", "S", "T"],
+                "nullable": False,
             },
         ],
     }
-    schema_provider = BinaryClassificationSchema(schema_dict)
+    schema_provider = MulticlassClassificationSchema(schema_dict)
     predictions = pd.DataFrame(
         {
             "id": [1, 2, 3, 4, 5],

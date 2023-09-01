@@ -18,7 +18,7 @@ class Classifier:
         classifier models.
     """
 
-    model_name = 'AutoGluon_binary_classifier'
+    model_name = 'AutoGluon_multiclass_classifier'
 
     def __init__(self, train_input: TabularDataset, schema: MulticlassClassificationSchema):
         """Construct a new Binary Classifier."""

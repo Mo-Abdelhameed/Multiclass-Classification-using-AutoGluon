@@ -113,7 +113,7 @@ def create_predictions_response(
 
     Args:
         predictions_df (pd.DataFrame): The transformed input data for prediction.
-        data_schema (Any): An instance of the BinaryClassificationSchema.
+        data_schema (Any): An instance of the MulticlassClassificationSchema.
         request_id (str): Unique request id for logging and tracking
 
     Returns:
@@ -132,6 +132,7 @@ def create_predictions_response(
                 "predictedProbabilities": [
                     round(sample[class_names[0]], 5),
                     round(sample[class_names[1]], 5),
+                    round(sample[class_names[2]], 5),
                 ],
             }
         )
