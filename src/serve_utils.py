@@ -130,9 +130,7 @@ def create_predictions_response(
                 "sampleId": sample[data_schema.id],
                 "predictedClass": str(sample["__predicted_class"]),
                 "predictedProbabilities": [
-                    round(sample[class_names[0]], 5),
-                    round(sample[class_names[1]], 5),
-                    round(sample[class_names[2]], 5),
+                    round(sample[class_names[i]], 5) for i in range(len(class_names))
                 ],
             }
         )
